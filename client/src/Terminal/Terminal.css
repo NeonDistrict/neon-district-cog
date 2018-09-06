@@ -1,0 +1,56 @@
+/** Terminal Styles **/
+#terminal {
+	display: fixed;
+	position: fixed;
+	text-align: left;
+	margin: auto;
+}
+
+.cmd, .terminal {
+    color: rgba(0, 255, 51, 1.0);
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.small-terminal {
+	top: 0px;
+	left: calc(100% - 600px);
+}
+
+.terminal-overlay {
+	top: 0px;
+	left: calc(100% - 585px);
+	margin: 0 auto;
+	width: 1170px;
+	height: 704px;
+	font-size: 20px;
+	line-height: 20px;
+	color: rgba(10, 192, 18, 1.0);
+	background-color: #000;
+}
+
+.wrapper_t10 {
+    position:relative;
+}
+
+#canvas_t10 {
+    position:absolute;
+    background-color: rgba(0, 0, 0, 1);
+}
+
+#terminal_t10 {
+    width: 1170px;
+    height: 704px;
+    background-color: rgba(0, 0, 0, 1);
+    margin: 0;
+    position:absolute;
+}
+
+#typer_t10 {
+    position: relative;
+    display: inline-block;
+    color: rgba(10, 192, 18, 1.0);
+    font-family: monospace;
+    line-height: 20px;
+    font-size: 20px;
+    padding: 20px;
+}

@@ -1,0 +1,78 @@
+html, body {
+  height: 100%;
+  width: 100%;
+  background: black;
+}
+
+body {
+  background: url('images/cog.jpg') no-repeat;
+  background-size: auto 100%;
+  background-position: top right;
+}
+
+.App {
+  text-align: center;
+}
+
+a {
+  color: lightblue;
+}
+
+p {
+  margin:10px;
+}
+
+#left-eye {
+  display: block;
+  position: absolute;
+  top: 168px;
+  left: calc(100% - 938px);
+  height: 50px;
+  width: 50px;
+}
+
+#right-eye {
+  display: block;
+  position: absolute;
+  top: 229px;
+  left: calc(100% - 1039px);
+  height: 50px;
+  width: 50px;
+}
+
+.dot {
+  border-radius: 50%;
+  display: inline-block;
+  background-color: #FFDD1B;
+  opacity: 0.6;
+  -webkit-animation: yellowneon 1.25s ease-in-out infinite alternate;
+  -moz-animation: yellowneon 1.25s ease-in-out infinite alternate;
+  animation: yellowneon 1.25s ease-in-out infinite alternate;
+}
+
+@-webkit-keyframes yellowneon {
+  from {
+    box-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #FFDD1B, 0 0 70px #FFDD1B, 0 0 80px #FFDD1B, 0 0 100px #FFDD1B, 0 0 150px #FFDD1B;
+  }
+  to {
+    box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #FFDD1B, 0 0 35px #FFDD1B, 0 0 40px #FFDD1B, 0 0 50px #FFDD1B, 0 0 75px #FFDD1B;
+  }
+}
+
+@-moz-keyframes yellowneon {
+  from {
+    box-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #FFDD1B, 0 0 70px #FFDD1B, 0 0 80px #FFDD1B, 0 0 100px #FFDD1B, 0 0 150px #FFDD1B;
+  }
+  to {
+    box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #FFDD1B, 0 0 35px #FFDD1B, 0 0 40px #FFDD1B, 0 0 50px #FFDD1B, 0 0 75px #FFDD1B;
+  }
+}
+
+@keyframes yellowneon {
+  from {
+    box-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #FFDD1B, 0 0 70px #FFDD1B, 0 0 80px #FFDD1B, 0 0 100px #FFDD1B, 0 0 150px #FFDD1B;
+  }
+  to {
+    box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #FFDD1B, 0 0 35px #FFDD1B, 0 0 40px #FFDD1B, 0 0 50px #FFDD1B, 0 0 75px #FFDD1B;
+  }
+}
