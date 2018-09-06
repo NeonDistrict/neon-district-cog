@@ -55,7 +55,11 @@ class Terminal extends Component {
 	}
 
 
-	queryTerminal = async (line) => {
+	queryTerminal = async (line, term) => {
+
+		// Loading
+		term.set_prompt("[[b;yellow;]Computing Response.\n]");
+
 		const command = line.split(' ')[0];
 		const input = line.split(' ').slice(1).join(' ').toString();
 
@@ -68,6 +72,11 @@ class Terminal extends Component {
 		}
 
 		const text = await response.text();
+
+		// Show response
+		term.echo("[[b;green;]Loaded Response.]\n")
+			.set_prompt("$ ");
+
 		return "[[b;lightblue;]" + text + "]";
 	}
 
@@ -77,7 +86,7 @@ class Terminal extends Component {
 		}
 
 		//env.sounds.bleep.play();
-		var res = env.queryTerminal.call(env, command);
+		var res = env.queryTerminal.call(env, command, this);
 		this.echo(res);
 		env.sounds.blarp.play();
 	}
