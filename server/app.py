@@ -25,6 +25,7 @@ def get_bot_response():
     return resp
 
 ## REACT
+@app.route("/")
 @app.route("/index.html")
 def home():
     return app.send_static_file('index.html')

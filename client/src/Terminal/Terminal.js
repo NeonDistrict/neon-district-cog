@@ -59,8 +59,8 @@ class Terminal extends Component {
 		const command = line.split(' ')[0];
 		const input = line.split(' ').slice(1).join(' ').toString();
 
-		//let url = (window.location.href.includes("localhost")) ? "http://127.0.0.1" : window.location.protocol + '//' + window.location.hostname;
-		const response = await fetch(window.location.href + "get?msg=" + line, {'method': 'get'});
+		let url = (window.location.href.includes("localhost")) ? "http://127.0.0.1:5000" : window.location.protocol + '//' + window.location.hostname + (window.location.port ? ':' + window.location.port : '');
+		const response = await fetch(url + "/get?msg=" + line, {'method': 'get'});
 
 		const status = response.status;
 		if (status !== 200) {
