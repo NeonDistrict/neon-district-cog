@@ -74,7 +74,7 @@ class Terminal extends Component {
 		const text = await response.text();
 
 		// Show response
-		term.echo("[[b;green;]Loaded Response.]\n")
+		term.echo("[[b;green;]Loaded Response.]")
 			.set_prompt("$ ");
 
 		return "[[b;lightblue;]" + text + "]";
