@@ -1,6 +1,12 @@
 # React builds
 client/build/*
 server/build/*
+*build/*
+
+# Replika data
+*/data/conditions_index/*
+*/data/nn_models/*
+*/data/tokens_index/*
 
 # sqlite DBs for AI
 *.sqlite*

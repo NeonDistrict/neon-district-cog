@@ -4,10 +4,7 @@
   "scripts": {
     "client": "cd client && npm run start",
     "dev": "npm run client",
-    "build": "cd client && npm run build && cp -a build ../server/",
-    "prod": "cd server && python app.py"
-  },
-  "dependencies": {
-    "concurrently": "*"
+    "build": "cd client && npm run build && cp -a build ../server/cakechat/api/v1/",
+    "prod": "cd server && python bin/cakechat_server.py"
   }
 }

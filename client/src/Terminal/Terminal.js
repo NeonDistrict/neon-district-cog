@@ -14,6 +14,10 @@ class Terminal extends Component {
 			'bloop' : new Audio(error_short_wav)
 		};
 
+		this.sounds.blarp.volume = 0.3;
+		this.sounds.bleep.volume = 0.3;
+		this.sounds.bloop.volume = 0.3;
+
 		window.queryTerminal = this.queryTerminal;
 	}
 
@@ -54,14 +58,12 @@ class Terminal extends Component {
 		});
 	}
 
-
+	/*
+	// Chatterbot
 	queryTerminal = async (line, term) => {
 
 		// Loading
 		term.set_prompt("[[b;yellow;]Computing Response.\n]");
-
-		const command = line.split(' ')[0];
-		const input = line.split(' ').slice(1).join(' ').toString();
 
 		let url = (window.location.href.includes("localhost")) ? "http://127.0.0.1:5000" : window.location.protocol + '//' + window.location.hostname + (window.location.port ? ':' + window.location.port : '');
 		const response = await fetch(url + "/get?msg=" + line, {'method': 'get'});
@@ -72,6 +74,41 @@ class Terminal extends Component {
 		}
 
 		const text = await response.text();
+
+		// Show response
+		term.echo("[[b;green;]Loaded Response.]")
+			.set_prompt("$ ");
+
+		return "[[b;lightblue;]" + text + "]";
+	}
+	*/
+
+	// Replika
+	queryTerminal = async (line, term) => {
+
+		// Loading
+		term.set_prompt("[[b;yellow;]Computing Response.\n]");
+
+		let url = (window.location.href.includes("localhost")) ? "http://127.0.0.1" : window.location.protocol + '//' + window.location.hostname;
+		const response = await fetch(url + "/cakechat_api/v1/actions/get_response", {
+			'method': 'post',
+			'headers': {
+				'Accept' : 'application/json',
+				'Content-Type' : 'application/json'
+			},
+			'body': JSON.stringify({
+				'context' : [line]
+			})
+		});
+
+		const status = response.status;
+		if (status !== 200) {
+			return '-cog: Lost connection to COG 1347-1'
+		}
+
+		const json = await response.json();
+		let text = json.response;
+		let emotion = (json.hasOwnProperty('emotion') ? json.emotion : 'neutral');
 
 		// Show response
 		term.echo("[[b;green;]Loaded Response.]")
