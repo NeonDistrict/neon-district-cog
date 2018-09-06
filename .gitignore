@@ -1,5 +1,6 @@
 # React builds
 client/build/*
+server/build/*
 
 # sqlite DBs for AI
 *.sqlite*

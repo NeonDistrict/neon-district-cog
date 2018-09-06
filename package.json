@@ -4,10 +4,8 @@
   "scripts": {
     "client": "cd client && npm run start",
     "dev": "npm run client",
-    "build": "cd client && npm run build",
-    "client-prod": "cd client && serve -p 80 -t -s build",
-    "server-prod": "cd server && python app.py",
-    "prod": "concurrently --kill-others-on-fail \"npm run server-prod\" \"npm run client-prod\""
+    "build": "cd client && npm run build && cp -a build ../server/",
+    "prod": "cd server && python app.py"
   },
   "dependencies": {
     "concurrently": "*"

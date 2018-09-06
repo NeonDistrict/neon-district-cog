@@ -59,8 +59,8 @@ class Terminal extends Component {
 		const command = line.split(' ')[0];
 		const input = line.split(' ').slice(1).join(' ').toString();
 
-		let url = (window.location.href.includes("localhost")) ? "http://127.0.0.1" : window.location.href;
-		const response = await fetch(url + ":5000/get?msg=" + line, {'method': 'get'});
+		//let url = (window.location.href.includes("localhost")) ? "http://127.0.0.1" : window.location.protocol + '//' + window.location.hostname;
+		const response = await fetch(window.location.href + "get?msg=" + line, {'method': 'get'});
 
 		const status = response.status;
 		if (status !== 200) {
@@ -68,7 +68,7 @@ class Terminal extends Component {
 		}
 
 		const text = await response.text();
-		return "[[b;lightblue;]" + text;
+		return "[[b;lightblue;]" + text + "]";
 	}
 
 	handleCommand(command, env) {
