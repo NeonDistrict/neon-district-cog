@@ -9,6 +9,7 @@ import cogImg from './images/cog.jpg';
 
 // Pages
 import Terminal from './Terminal/Terminal.js';
+import Footer from './Footer/Footer.js';
 
 class App extends Component {
   constructor(props){
@@ -50,6 +51,7 @@ class App extends Component {
           <span id="left-eye" className="eye-dot yellow-glow"></span>
           <span id="right-eye" className="eye-dot yellow-glow"></span>
           <Terminal />
+          <Footer />
         </div>
       </Router>
     );

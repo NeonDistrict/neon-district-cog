@@ -45,11 +45,18 @@ class Terminal extends Component {
 			this.$terminal.destroy();
 		}
 
+		var today = new Date();
+		var date = '2XXX-'+(today.getMonth()+1)+'-'+today.getDate();
+		var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+		var date_and_time = date + " " + time;
+
+		let welcome = "<< Neon District Help Desk is Online >>\n\nCOG 1347-1 version 2.4.2148 (gcc version 7.96 200)\nMUR 132118 (GOG MUR 5.5.2393) " + date_and_time + "\nBIOS-provided neon RAM map:\nBIOS-mur132118: 00000000000000000 - 000000000009fc00 (usable)\nBIOS-mur132118: 0000000000009fc00 - 00000000000a0000 (reserved)\nBIOS-mur132118: 00000000000ce0000 - 0000000000100000 (reserved)\nBIOS-mur132118: 00000000000100000 - 000000003fff8000 (usable)\nBIOS-mur132118: 0000000003fff0000 - 0000000040000000 (ACPI data)\nBIOS-mur132118: 0000000003fff8000 - 0000000040000000 (ACPI NVS)\nBIOS-mur132118: 000000000fff00000 - 0000000100000000 (reserved)\nInitializing CPU#0\nDentry cache hasssssssssssssssssssssssssssh\nRamfs: mounted with oooooooooooooooooooooooooopjuhuihrfp8943hh\nERROR\nCPU : MURMURMURMURMURMURMURMURMURMUR\n     SYSTEM_ERROR\n     Total number of system errors : 5\n     Manual correction needed.";
+
 		var self = this;
 		this.$terminal = window.$('#terminal').terminal(function(command) {
 			self.handleCommand.call(this, command, self);
 		}, {
-			greetings: '<< COG 1347-1 :: *CONFIDENTIAL* FOR INTERNAL USE ONLY >>\n',
+			greetings: welcome,//'<< COG 1347-1 :: *CONFIDENTIAL* FOR INTERNAL USE ONLY >>\n',
 			name: 'cog',
 			height: this.height,
 			width: this.width,

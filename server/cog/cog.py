@@ -4,6 +4,7 @@ import json
 import math
 import string
 import jellyfish
+import random
 
 __location__ = os.path.realpath(os.path.join(os.getcwd(), os.path.dirname(__file__)))
 
@@ -39,11 +40,16 @@ def find_match(phrase):
             text = text.lower()
 
             res = jellyfish.damerau_levenshtein_distance(phrase, text)
-            if res <= math.log(len(text), 1.82):
+            if res <= math.log(len(text), 2):
                 # Take the next one
                 if i < len(d_set) - 1:
                     row = d_set[i+1]
                     row['distance'] = res
+
+                    # If the answers are a list, pick one
+                    if isinstance(row['text'], list):
+                        row['text'] = random.choice(row['text'])
+
                     if smallest_match is None or row['distance'] < smallest_match['distance']:
                         smallest_match = row
 

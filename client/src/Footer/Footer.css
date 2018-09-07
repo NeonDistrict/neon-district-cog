@@ -1,0 +1,44 @@
+#footerContainer {
+	width: 100%;
+	position: fixed;
+	bottom: 0px;
+	height: 50px;
+	left: 0px;
+	right: 0px;
+	text-align: right;
+  	z-index:100000;
+}
+
+#footer {
+	width: 100%;
+	margin: 0;
+	position: absolute;
+	height: 50px;
+	bottom: 0;
+}
+
+#discord, #reddit, #twitter {
+	width: 32px;
+	height: 32px;
+	opacity: 0.8;
+	position: relative;
+	margin-right: 10px;
+}
+
+#discord:hover, #reddit:hover, #twitter:hover {
+	opacity: 1;
+}
+
+#reddit {
+	margin-right: 10px;
+}
+
+#logo {
+	display: inline-block;
+	width: 32px;
+	height: 32px;
+	margin: 0 auto;
+	padding: 0;
+	position: relative;
+	margin-right: 30px;
+}
