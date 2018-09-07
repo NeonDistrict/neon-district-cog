@@ -6,6 +6,10 @@ from cakechat.config import EMOTIONS_TYPES, DEFAULT_CONDITION
 from cakechat.utils.logger import get_logger
 from cakechat.utils.profile import timer
 
+import sys
+sys.path.append('../')
+from cog import cog
+
 _logger = get_logger(__name__)
 
 app = Flask(__name__, static_folder='build')
@@ -56,6 +60,11 @@ def get_model_response():
         return get_api_error_response('Malformed request, emotion param "%s" is not in emotion list %s' %
                                       (emotion, list(EMOTIONS_TYPES)), 400, _logger)
 
+    # ND Find Match
+    fm_response, fm_emotion, fm_activity = cog.find_match(dialog_context[0])
+    if fm_response is not None:
+        return jsonify({'response': fm_response, 'emotion': fm_emotion, 'activity': fm_activity}), 200
+
     response = get_response(dialog_context, emotion)
 
     if not response:
@@ -64,4 +73,4 @@ def get_model_response():
 
     _logger.info('Given response: "%s" for context: %s; emotion "%s"' % (response, dialog_context, emotion))
 
-    return jsonify({'response': response, 'emotion': emotion}), 200
+    return jsonify({'response': response, 'emotion': emotion, 'activity': 'none'}), 200

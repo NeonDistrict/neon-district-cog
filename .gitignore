@@ -8,6 +8,8 @@ server/build/*
 */data/nn_models/*
 */data/tokens_index/*
 
+*.pyc
+
 # sqlite DBs for AI
 *.sqlite*
 *.sqlite3*

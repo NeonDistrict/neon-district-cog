@@ -47,8 +47,8 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-          <span id="left-eye" class="dot"></span>
-          <span id="right-eye" class="dot"></span>
+          <span id="left-eye" className="eye-dot yellow-glow"></span>
+          <span id="right-eye" className="eye-dot yellow-glow"></span>
           <Terminal />
         </div>
       </Router>

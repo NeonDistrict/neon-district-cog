@@ -109,12 +109,35 @@ class Terminal extends Component {
 		const json = await response.json();
 		let text = json.response;
 		let emotion = (json.hasOwnProperty('emotion') ? json.emotion : 'neutral');
+		let activity = (json.hasOwnProperty('activity') ? json.activity : 'none');
 
 		// Show response
 		term.echo("[[b;green;]Loaded Response.]")
 			.set_prompt("$ ");
 
-		return "[[b;lightblue;]" + text + "]";
+		window.$('.eye-dot').removeClass('yellow-glow red-glow green-glow blue-glow orange-glow violet-glow');
+		if (emotion == 'neutral') {
+			window.$('.eye-dot').addClass('yellow-glow');
+		} else if (emotion == 'anger') {
+			window.$('.eye-dot').addClass('red-glow');
+		} else if (emotion == 'joy') {			
+			window.$('.eye-dot').addClass('green-glow');
+		} else if (emotion == 'sadness') {
+			window.$('.eye-dot').addClass('blue-glow');
+		} else if (emotion == 'fear') {
+			window.$('.eye-dot').addClass('orange-glow');
+		}
+
+		if (activity == 'raw') {
+			// Raw HTML
+			term.echo(text, {'raw':true});
+		} else {
+			// Default
+			term.echo("[[b;lightblue;]" + text + "]");
+		}
+
+		// Return sound
+		this.sounds.blarp.play();
 	}
 
 	handleCommand(command, env) {
@@ -122,10 +145,7 @@ class Terminal extends Component {
 			return;
 		}
 
-		//env.sounds.bleep.play();
-		var res = env.queryTerminal.call(env, command, this);
-		this.echo(res);
-		env.sounds.blarp.play();
+		env.queryTerminal.call(env, command, this);
 	}
 
 	render() {
