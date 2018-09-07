@@ -25,7 +25,7 @@ def find_match(phrase):
     lines = d['lines']
     smallest_match = None
     for d_set in lines:
-        for i in range(len(d_set)):
+        for i in range(0, len(d_set), 2):
             if i >= len(d_set) - 1:
                 continue
 
