@@ -58,32 +58,6 @@ class Terminal extends Component {
 		});
 	}
 
-	/*
-	// Chatterbot
-	queryTerminal = async (line, term) => {
-
-		// Loading
-		term.set_prompt("[[b;yellow;]Computing Response.\n]");
-
-		let url = (window.location.href.includes("localhost")) ? "http://127.0.0.1:5000" : window.location.protocol + '//' + window.location.hostname + (window.location.port ? ':' + window.location.port : '');
-		const response = await fetch(url + "/get?msg=" + line, {'method': 'get'});
-
-		const status = response.status;
-		if (status !== 200) {
-			return '-cog: Lost connection to COG 1347-1'
-		}
-
-		const text = await response.text();
-
-		// Show response
-		term.echo("[[b;green;]Loaded Response.]")
-			.set_prompt("$ ");
-
-		return "[[b;lightblue;]" + text + "]";
-	}
-	*/
-
-	// Replika
 	queryTerminal = async (line, term) => {
 
 		// Loading

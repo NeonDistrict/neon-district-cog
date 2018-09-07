@@ -21,6 +21,9 @@ def find_match(phrase):
     phrase = phrase.translate(remove_punctuation_map)
     phrase = phrase.lower()
 
+    if phrase.strip() == "run program interoperable data systems":
+        return '<video width="320" height="240" autoplay src="https://s3.amazonaws.com/neon-district-easter-egg/b33bf85a8fff8ff65f172e07d128b810.mov"></video><audio autoplay><source src="https://s3.amazonaws.com/neon-district-easter-egg/f405f60b8acfdb9093a65e9516eee924.wav" type="audio/wav"></audio>', "sadness", "raw"
+
     # Check each phrase for a match
     lines = d['lines']
     smallest_match = None
