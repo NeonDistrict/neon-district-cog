@@ -1,4 +1,6 @@
 from flask import Flask, request, jsonify, make_response, send_from_directory
+from flask_limiter import Limiter
+from flask_limiter.util import get_remote_address
 
 from cakechat.api.response import get_response
 from cakechat.api.utils import get_api_error_response, parse_dataset_param
@@ -13,6 +15,12 @@ from cog import cog
 _logger = get_logger(__name__)
 
 app = Flask(__name__, static_folder='build')
+
+limiter = Limiter(
+    app,
+    key_func=get_remote_address,
+    default_limits=["6 per second"],
+)
 
 ## REACT
 @app.route("/")
