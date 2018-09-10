@@ -7,7 +7,8 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from cakechat.utils.env import init_theano_env
 
-init_theano_env()
+init_theano_env(is_dev=True)
+#init_theano_env()
 
 # All of the react stuff is in this folder
 from cakechat.api.v1.server import app

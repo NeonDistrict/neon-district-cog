@@ -40,7 +40,7 @@ def find_match(phrase):
             text = text.lower()
 
             res = jellyfish.damerau_levenshtein_distance(phrase, text)
-            if res <= math.log(len(text), 2):
+            if res <= math.log(len(text), 3):
                 # Take the next one
                 if i < len(d_set) - 1:
                     row = d_set[i+1]

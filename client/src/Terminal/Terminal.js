@@ -83,6 +83,10 @@ class Terminal extends Component {
 		});
 
 		const status = response.status;
+		if (status === 429) {
+			return "You're talking too fast for me to keep up."
+		}
+
 		if (status !== 200) {
 			return '-cog: Lost connection to COG 1347-1'
 		}

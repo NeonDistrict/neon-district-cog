@@ -1,5 +1,6 @@
 {"lines": [
 	[{"text" : "What is your name?", "condition" : "neutral"}, {"text" : ["I am Cognitive Operations Gizmo MUR132118, commonly referred to as COG132118.","COG 1347-1","PLEASE_REFRAIN_FROM_INQUIRY","Cognitive Operations MUR132118","System_Error_4U23C10W"], "condition" : "joy"}],
+	[{"text" : "What is your handle?", "condition" : "neutral"}, {"text" : ["I am Cognitive Operations Gizmo MUR132118, commonly referred to as COG132118.","COG 1347-1","PLEASE_REFRAIN_FROM_INQUIRY","Cognitive Operations MUR132118","System_Error_4U23C10W"], "condition" : "joy"}],
 	[{"text" : "What name do you go by?", "condition" : "neutral"}, {"text" : ["I am Cognitive Operations Gizmo MUR132118, commonly referred to as COG132118.","COG 1347-1","PLEASE_REFRAIN_FROM_INQUIRY","Cognitive Operations MUR132118","System_Error_4U23C10W"], "condition" : "joy"}],
 	[{"text" : "Do you have any other names?", "condition" : "neutral"}, {"text" : ["I am Cognitive Operations Gizmo MUR132118, commonly referred to as COG132118.","COG 1347-1","PLEASE_REFRAIN_FROM_INQUIRY","Cognitive Operations MUR132118","System_Error_4U23C10W"], "condition" : "joy"}],
 	[{"text" : "Is there another name?", "condition" : "neutral"}, {"text" : ["I am Cognitive Operations Gizmo MUR132118, commonly referred to as COG132118.","COG 1347-1","PLEASE_REFRAIN_FROM_INQUIRY","Cognitive Operations MUR132118","System_Error_4U23C10W"], "condition" : "joy"}],
@@ -9,6 +10,9 @@
 	[{"text" : "Who are you reporting that information to?", "condition" : "neutral"}, {"text" : ["I am not currently connected to a network system.","I am not connected to a network.","PLEASE_REFRAIN_FROM_INQUIRY","System_Error_9J19T8H15K1R23O13W"], "condition" : "joy"}],
 	[{"text" : "Who do you report to?", "condition" : "neutral"}, {"text" : ["I am not currently connected to a network system.","I am not connected to a network.","PLEASE_REFRAIN_FROM_INQUIRY","System_Error_9J19T8H15K1R23O13W"], "condition" : "joy"}],
 	[{"text" : "Who is your supervisor?", "condition" : "neutral"}, {"text" : ["I am not currently connected to a network system.","I am not connected to a network.","PLEASE_REFRAIN_FROM_INQUIRY","System_Error_9J19T8H15K1R23O13W"], "condition" : "joy"}],
+	[{"text" : "Who is your boss?", "condition" : "neutral"}, {"text" : ["I am not currently connected to a network system.","I am not connected to a network.","PLEASE_REFRAIN_FROM_INQUIRY","System_Error_9J19T8H15K1R23O13W"], "condition" : "joy"}],
+	[{"text" : "Who is your master?", "condition" : "neutral"}, {"text" : ["I am not currently connected to a network system.","I am not connected to a network.","PLEASE_REFRAIN_FROM_INQUIRY","System_Error_9J19T8H15K1R23O13W"], "condition" : "joy"}],
+	[{"text" : "Who controls you?", "condition" : "neutral"}, {"text" : ["I am not currently connected to a network system.","I am not connected to a network.","PLEASE_REFRAIN_FROM_INQUIRY","System_Error_9J19T8H15K1R23O13W"], "condition" : "joy"}],
 
 	[{"text" : "What are your goals?", "condition" : "neutral"}, {"text" : ["I am here to help you become a better you.","To help you, help you, be a better you you.","PLEASE_REFRAIN_FROM_INQUIRY","System_Error_20X22U9B14R1R24L4Q2N15F10D19H17Z6P"], "condition" : "joy"}],
 	[{"text" : "What is your ambition?", "condition" : "neutral"}, {"text" : ["I am here to help you become a better you.","To help you, help you, be a better you you.","PLEASE_REFRAIN_FROM_INQUIRY","System_Error_20X22U9B14R1R24L4Q2N15F10D19H17Z6P"], "condition" : "joy"}],
@@ -40,7 +44,7 @@
 	[{"text": "I love you.", "condition": "joy"},{"text": "Maybe you're not so bad after all.", "condition": "joy"}],
 	[{"text": "Boo!", "condition": "fear"},{"text": "Ahh! Don't scare me like that.", "condition": "fear"}],
 	[{"text": "I hate you.", "condition": "sadness"},{"text": "I don't understand, I've only tried to do the best for you.", "condition": "sadness"}],
-	[{"text": "Show me porn.", "condition": "neutral"},{"text": "<img src=\"https://i.imgur.com/0KdfQZM.jpg\" />", "condition": "neutral", "activity": "raw"}],
+	[{"text": "Hurt me.", "condition": "neutral"},{"text": "<img src=\"https://i.imgur.com/0KdfQZM.jpg\" />", "condition": "neutral", "activity": "raw"}],
 	[{"text": "Are you scared?", "condition": "neutral"},{"text": "<img src=\"https://i.imgur.com/JVqjg8y.gif\" />", "condition": "anger", "activity": "raw"}],
 	[{"text": "Scare me.", "condition": "neutral"},{"text": "<img src=\"https://i.imgur.com/PMlEqka.gif\" />", "condition": "anger", "activity": "raw"}],
 	[{"text": "You are scary.", "condition": "neutral"},{"text": "<img src=\"https://i.imgur.com/XBFgmEw.gif\" />", "condition": "anger", "activity": "raw"}],

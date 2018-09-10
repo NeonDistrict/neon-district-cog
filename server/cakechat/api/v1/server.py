@@ -8,6 +8,9 @@ from cakechat.config import EMOTIONS_TYPES, DEFAULT_CONDITION
 from cakechat.utils.logger import get_logger
 from cakechat.utils.profile import timer
 
+import random
+default_responses = ["Are you broken?", "Do you need spare parts?", "Did you try turning it off and then back on?", "Try the reset button.", "Unplug and plug back in.", "Untether if you have not done so already.", "IT service is online and ready for action!", "Let's do this thing.", "It's probably dusty.", "It is certain.", "It is decidedly so.", "Without a doubt.", "Yes - Definitely. ", "You may rely on it. ", "As I see it, yes.", "Most likely.", "Outlook good.", "Yes.", "Signs point to yes.", "Reply hazy, try again.", "Ask again later.", "Better not tell you now.", "Cannot predict now.", "Concentrate and ask again.", "Don't count on it.", "My reply is no.", "My sources say no.", "Outlook not so good."]
+
 import sys
 sys.path.append('../')
 from cog import cog
@@ -56,6 +59,9 @@ def get_model_response():
     params = request.get_json()
     _logger.info('request params: %s' % params)
 
+    if params is None:
+        return jsonify({'response': random.choice(default_responses), 'emotion': 'anger', 'activity': 'none'}), 200
+
     try:
         dialog_context = parse_dataset_param(params, param_name='context')
     except KeyError as e:
@@ -73,7 +79,11 @@ def get_model_response():
     if fm_response is not None:
         return jsonify({'response': fm_response, 'emotion': fm_emotion, 'activity': fm_activity}), 200
 
-    response = get_response(dialog_context, emotion)
+    try:
+        response = get_response(dialog_context, emotion)
+    except:
+        _logger.error('Request caused an unknown error: %s; emotion "%s"' % (dialog_context, emotion))
+        return jsonify({'response': random.choice(default_responses), 'emotion': 'sadness', 'activity': 'none'}), 200
 
     if not response:
         _logger.error('No response for context: %s; emotion "%s"' % (dialog_context, emotion))

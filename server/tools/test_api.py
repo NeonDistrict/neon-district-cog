@@ -10,8 +10,8 @@ import requests
 
 from cakechat.config import DEFAULT_CONDITION
 
-_HOST_FQDN = '127.0.0.1'
-_SERVER_PORT = '8080'
+_HOST_FQDN = '0.0.0.0'
+_SERVER_PORT = '80'
 
 
 def parse_args():
@@ -29,5 +29,6 @@ if __name__ == '__main__':
     url = 'http://%s:%s/cakechat_api/v1/actions/get_response' % (args.fqdn, args.port)
     body = {'context': args.context, 'emotion': args.emotion}
 
-    response = requests.post(url, json=body)
+    #response = requests.post(url, json=body)
+    response = requests.post(url)
     print(response.json())
