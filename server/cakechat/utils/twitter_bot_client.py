@@ -46,7 +46,7 @@ class TwitterBot(WithLogger):
     """
     def findNextTweet(self):
         try:
-            tweets = self.api.search("to:COG1347", since_id=self.since_id)
+            tweets = self.api.search("@COG1347 -filter:retweets", since_id=self.since_id)
             oldest_tweet = None
             for tweet in tweets:
                 if oldest_tweet is None or oldest_tweet.id > tweet.id:
@@ -116,7 +116,6 @@ class TwitterBot(WithLogger):
         return message
 
     def respond(self, tweet_id, response, image_filename = None):
-        #print "response will be sent here"
         if image_filename is None:
             self.api.update_status(response, in_reply_to_status_id = tweet_id)
         else:
