@@ -8,6 +8,7 @@ import argparse
 from cakechat.utils.env import init_theano_env
 
 init_theano_env(is_dev=True)
+#init_theano_env()
 
 from cakechat.utils.twitter_bot_client import TwitterBot
 
