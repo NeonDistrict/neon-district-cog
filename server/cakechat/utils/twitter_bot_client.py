@@ -80,18 +80,28 @@ class TwitterBot(WithLogger):
         # Need to collect responses from the lines as well
         # -- gifs need to be converted to usable format
         response, _, _ = find_match(msg.encode("utf8"), twitter = True)
+        image_filename = None
         if response is None:
             #condition = random.choice(['neutral', 'joy', 'anger', 'sadness', 'fear'])
             #response = get_response(context, condition)
             response = get_response(context, DEFAULT_CONDITION)
             self._logger.info('Respond to tweet ({}) using AI: {}'.format(msg.encode("utf8"), response))
+
+            # Format
+            response = "@" + tweeter + " " + response
         else:
+            if response.endswith('.gif') or response.endswith('.jpg') or response.endswith('.png'):
+                image_filename = response
+                
+                # Direct to the tweeter
+                response = "@" + tweeter
+            else:
+                # Format
+                response = "@" + tweeter + " " + response
+            
             self._logger.info('Respond to tweet ({}) using Cog logic: {}'.format(msg.encode("utf8"), response))
 
-        # Format the response
-        response = "@" + tweeter + " " + response
-
-        return response
+        return response, image_filename
 
     def parseMessage(self, msg_text):
         """
@@ -103,9 +113,14 @@ class TwitterBot(WithLogger):
         message = msg_text[len('@' + self.screen_name):].strip()
         return message
 
-    def respond(self, tweet_id, response):
+    def respond(self, tweet_id, response, image_filename = None):
         #print "response will be sent here"
-        self.api.update_status(response, in_reply_to_status_id = tweet_id)
+        if image_filename is None:
+            self.api.update_status(response, in_reply_to_status_id = tweet_id)
+        else:
+            filename = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+            image_filename = filename + "/images/" + image_filename
+            self.api.update_with_media(image_filename, status = response, in_reply_to_status_id = tweet_id)
 
     def run(self):
         """
@@ -120,8 +135,8 @@ class TwitterBot(WithLogger):
             tweet = self.findNextTweet()
             if tweet is not None:
                 try:
-                    response = self.collectResponse(tweet.text, tweet.author.screen_name)
-                    self.respond(tweet.id, response)
+                    response, image_filename = self.collectResponse(tweet.text, tweet.author.screen_name)
+                    self.respond(tweet.id, response, image_filename)
                     self.since_id = tweet.id
                 except:
                     self._logger.info('Error trying to respond to tweet: {}'.format(str(tweet.id)))
