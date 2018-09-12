@@ -1,3 +1,5 @@
+import time
+
 from flask import Flask, request, jsonify, make_response, send_from_directory
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
@@ -52,12 +54,18 @@ def send_static(path):
     return send_from_directory('build/static', path)
 ## REACT
 
+ip_ban_list = ['96.126.105.30', '18.209.71.222']
 
 @app.route('/cakechat_api/v1/actions/get_response', methods=['POST'])
+@limiter.limit("2 per second")
 @timer
 def get_model_response():
     params = request.get_json()
     _logger.info('request params: %s' % params)
+
+    if request.remote_addr in ip_ban_list:
+        time.sleep(3)
+        return jsonify({'response': random.choice(default_responses), 'emotion': 'neutral', 'activity': 'none'}), 200
 
     if params is None:
         return jsonify({'response': random.choice(default_responses), 'emotion': 'anger', 'activity': 'none'}), 200
