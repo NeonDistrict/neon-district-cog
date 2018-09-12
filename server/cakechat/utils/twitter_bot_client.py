@@ -108,9 +108,11 @@ class TwitterBot(WithLogger):
         Parse message text as <@screen_name> [message]
         """
         if not msg_text.startswith('@' + self.screen_name):
-            raise ValueError('The command must start with @')
+            message = msg_text.strip()
+            #raise ValueError('The command must start with @')
+        else:
+            message = msg_text[len('@' + self.screen_name):].strip()
 
-        message = msg_text[len('@' + self.screen_name):].strip()
         return message
 
     def respond(self, tweet_id, response, image_filename = None):
