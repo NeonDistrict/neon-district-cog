@@ -82,9 +82,9 @@ class TwitterBot(WithLogger):
         response, _, _ = find_match(msg.encode("utf8"), twitter = True)
         image_filename = None
         if response is None:
-            #condition = random.choice(['neutral', 'joy', 'anger', 'sadness', 'fear'])
-            #response = get_response(context, condition)
-            response = get_response(context, DEFAULT_CONDITION)
+            condition = random.choice(['neutral', 'joy', 'anger'])
+            response = get_response(context, condition)
+            #response = get_response(context, DEFAULT_CONDITION)
             self._logger.info('Respond to tweet ({}) using AI: {}'.format(msg.encode("utf8"), response))
 
             # Format

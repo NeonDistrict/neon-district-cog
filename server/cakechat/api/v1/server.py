@@ -54,7 +54,7 @@ def send_static(path):
     return send_from_directory('build/static', path)
 ## REACT
 
-ip_ban_list = ['96.126.105.30', '18.209.71.222']
+ip_ban_list = ['24.16.8.202', '104.132.62.74', '18.209.71.222']
 
 @app.route('/cakechat_api/v1/actions/get_response', methods=['POST'])
 @limiter.limit("2 per second")
@@ -77,7 +77,13 @@ def get_model_response():
     except ValueError as e:
         return get_api_error_response('Malformed request: %s' % str(e), 400, _logger)
 
-    emotion = params.get('emotion', DEFAULT_CONDITION)
+    #emotion = params.get('emotion', DEFAULT_CONDITION)
+    # Keep the emotion steady for a minute
+    time_seconds = int(time.time() / 60)
+    random.seed(a=time_seconds)
+    emotion = params.get('emotion', random.choice(['neutral', 'joy', 'anger']))
+    random.seed(a=time.time())
+
     if emotion not in EMOTIONS_TYPES:
         return get_api_error_response('Malformed request, emotion param "%s" is not in emotion list %s' %
                                       (emotion, list(EMOTIONS_TYPES)), 400, _logger)
