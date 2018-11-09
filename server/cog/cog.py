@@ -28,7 +28,8 @@ def find_match(phrase, twitter = False):
     phrase = phrase.lower()
 
     if not twitter:
-        if phrase.strip() == "run program 1nteroperabl3 dat4 sys7ems":
+        final_answer = "".join([c for c in phrase if c in string.letters or c in string.digits])
+        if final_answer == "runprogram1nteroperabl3dat4sys7em" or final_answer == "runprograminteroperabledatasystem":
             return '<video width="320" height="240" autoplay src="https://s3.amazonaws.com/neon-district-easter-egg/b33bf85a8fff8ff65f172e07d128b810.mov"></video><audio autoplay><source src="https://s3.amazonaws.com/neon-district-easter-egg/f405f60b8acfdb9093a65e9516eee924.wav" type="audio/wav"></audio>', "sadness", "raw"
 
     # Check each phrase for a match
@@ -80,6 +81,6 @@ def find_match(phrase, twitter = False):
 if __name__ == '__main__':
     if len(sys.argv) > 1:
         phrase = sys.argv[1]
-        print find_match(phrase, twitter = True)
+        print find_match(phrase, twitter = False)
     else:
         print 'python cog.py "phrase here for testing"'
