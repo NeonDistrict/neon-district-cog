@@ -6,6 +6,13 @@ cd neon-district-cog
 npm install
 ```
 
+## Cog Software
+
+```
+cd server
+pip install -r requirements.txt
+```
+
 # Use
 
 In the root directory, just run with npm:
